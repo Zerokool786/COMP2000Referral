@@ -1,6 +1,5 @@
 package carhiring;
 
-import carhiring.controllers.CarHiringApplication;
 import javafx.application.Application;
 
 /**
