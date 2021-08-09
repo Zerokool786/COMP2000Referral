@@ -1,13 +1,13 @@
 package carhiring;
 
-import carhiring.controllers.CarHiringController;
+import carhiring.controllers.CarHiringApplication;
 import javafx.application.Application;
 
 /**
  * CarHiringRunner.java
  *
  * @version 1.0
- *
+ * <p>
  * It is the main class to start
  * the execution of the program.
  */
@@ -21,7 +21,7 @@ public class CarHiringRunner {
     public static void main(String[] args) {
 
         // Executing the program.
-        Application.launch(CarHiringController.class, args);
+        Application.launch(CarHiringApplication.class, args);
 
     }
 
