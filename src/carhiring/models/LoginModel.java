@@ -1,6 +1,6 @@
 package carhiring.models;
 
-import carhiring.models.data.Admin;
+import carhiring.models.data.AdminLogin;
 import carhiring.utils.Configuration;
 
 /**
@@ -13,19 +13,19 @@ import carhiring.utils.Configuration;
 public class LoginModel extends Model {
 
     // Attributes..
-    private Admin admin;
+    private AdminLogin admin;
 
     @Override
     public void initData() {
 
-        admin = new Admin(Configuration.ADMIN_USERNAME, Configuration.ADMIN_PASSWORD);
+        admin = new AdminLogin(Configuration.ADMIN_USERNAME, Configuration.ADMIN_PASSWORD);
 
     }
 
     /**
      * @return admin
      */
-    public Admin getAdmin() {
+    public AdminLogin getAdmin() {
 
         return admin;
 

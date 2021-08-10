@@ -2,7 +2,7 @@ package carhiring.controllers;
 
 import carhiring.models.LoginModel;
 import carhiring.models.Model;
-import carhiring.models.data.Admin;
+import carhiring.models.data.AdminLogin;
 import carhiring.utils.SceneType;
 import carhiring.utils.SceneUpdater;
 import carhiring.views.LoginView;
@@ -48,7 +48,7 @@ public class LoginController extends Controller {
                 // It will open the admin panel if username
                 // and password is correct, else it will give error.
                 LoginView view = (LoginView) getView();
-                Admin admin = ((LoginModel) getModel()).getAdmin();
+                AdminLogin admin = ((LoginModel) getModel()).getAdmin();
                 String username = view.getUsernameField().getText();
                 String password = view.getPasswordField().getText();
                 if(username.equals(admin.getUsername()) &&

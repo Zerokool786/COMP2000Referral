@@ -17,6 +17,7 @@ public class Booking implements Serializable {
 
     // Attributes..
     private Customer customer;
+    private Car car;
     private LocalDate bookingDate;
     private LocalDate returnDate;
     private long totalDays;
@@ -33,6 +34,7 @@ public class Booking implements Serializable {
     public Booking(Customer customer, LocalDate returnDate) {
 
         this.customer = customer;
+        this.car = customer.getBookedCar();
         this.bookingDate = LocalDate.now();
         this.returnDate = returnDate;
         this.totalDays = Duration.between(bookingDate, returnDate).toDays();
@@ -82,6 +84,15 @@ public class Booking implements Serializable {
     public double getTotalCost() {
 
         return totalCost;
+
+    }
+
+    /**
+     * @return booked car
+     */
+    public Car getCar() {
+
+        return car;
 
     }
 

@@ -19,6 +19,7 @@ public class Car implements Serializable {
     private double costPerDay;
     private boolean available;
     private LocalDate carAvailableDate;
+    private String availableStatus;
     // Filename..
     public static final String FILENAME = "cars.ser";
 
@@ -32,6 +33,8 @@ public class Car implements Serializable {
 
         this.name = name;
         this.costPerDay = costPerDay;
+        available = true;
+        this.availableStatus = "Yes";
 
     }
 
@@ -74,6 +77,15 @@ public class Car implements Serializable {
     }
 
     /**
+     * @return status of availability
+     */
+    public String getAvailableStatus() {
+
+        return availableStatus;
+
+    }
+
+    /**
      * Setting the new data.
      *
      * @param available of car
@@ -81,6 +93,7 @@ public class Car implements Serializable {
     public void setAvailable(boolean available) {
 
         this.available = available;
+        this.availableStatus = available ? "Yes" : "No";
 
     }
 
@@ -101,6 +114,13 @@ public class Car implements Serializable {
     public void setCarAvailableDate(LocalDate carAvailableDate) {
 
         this.carAvailableDate = carAvailableDate;
+
+    }
+
+    @Override
+    public String toString() {
+
+        return name;
 
     }
 
