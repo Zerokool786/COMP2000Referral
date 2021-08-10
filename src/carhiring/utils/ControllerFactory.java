@@ -1,10 +1,13 @@
 package carhiring.utils;
 
 import carhiring.controllers.AdminController;
+import carhiring.controllers.CustomerController;
 import carhiring.controllers.LoginController;
 import carhiring.models.AdminModel;
+import carhiring.models.CustomerModel;
 import carhiring.models.LoginModel;
 import carhiring.views.AdminView;
+import carhiring.views.CustomerView;
 import carhiring.views.LoginView;
 
 /**
@@ -35,7 +38,7 @@ public class ControllerFactory {
     }
 
     /**
-     * Create a admin controller and return it
+     * Create an admin controller and return it
      * for use.
      *
      * @param updater scene updater
@@ -46,6 +49,23 @@ public class ControllerFactory {
         AdminView view = new AdminView();
         AdminModel model = new AdminModel();
         AdminController controller = new AdminController(updater, model, view);
+        view.setController(controller);
+        return controller;
+
+    }
+
+    /**
+     * Create a customer controller and return it
+     * for use.
+     *
+     * @param updater scene updater
+     * @return customer controller
+     */
+    public static CustomerController createCustomerController(SceneUpdater updater) {
+
+        CustomerView view = new CustomerView();
+        CustomerModel model = new CustomerModel();
+        CustomerController controller = new CustomerController(updater, model, view);
         view.setController(controller);
         return controller;
 

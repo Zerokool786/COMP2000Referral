@@ -12,6 +12,14 @@ import javafx.scene.layout.HBox;
 
 import java.time.LocalDate;
 
+/**
+ * AdminView.java
+ *
+ * @version 1.0
+ *
+ * It is used to create a view and
+ * represents the components for Admin panel.
+ */
 public class AdminView extends View {
 
     // Attributes..
@@ -31,7 +39,6 @@ public class AdminView extends View {
         scene = new Scene(getGroup(), 900, 500);
 
         // init..
-
         carNameField = new TextField();
         carPriceField = new TextField();
         updateCarPriceField = new TextField();
@@ -63,13 +70,13 @@ public class AdminView extends View {
         // Table columns for available cars table.
         TableColumn<Car, String> availableCarColumn1 = new TableColumn<>("Name");
         availableCarColumn1.setCellValueFactory(new PropertyValueFactory<>("name"));
-        availableCarColumn1.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.33));
+        availableCarColumn1.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.32));
         TableColumn<Car, Double> availableCarColumn2 = new TableColumn<>("Cost Per Day");
         availableCarColumn2.setCellValueFactory(new PropertyValueFactory<>("costPerDay"));
-        availableCarColumn2.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.33));
+        availableCarColumn2.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.32));
         TableColumn<Car, String> availableCarColumn3 = new TableColumn<>("Available");
         availableCarColumn3.setCellValueFactory(new PropertyValueFactory<>("availableStatus"));
-        availableCarColumn3.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.33));
+        availableCarColumn3.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.32));
 
         availableCarsTable.getColumns().addAll(availableCarColumn1,
                 availableCarColumn2, availableCarColumn3);
@@ -88,16 +95,16 @@ public class AdminView extends View {
         // Table columns for available cars table.
         TableColumn<Booking, Customer> bookedCarColumn1 = new TableColumn<>("Customer Name");
         bookedCarColumn1.setCellValueFactory(new PropertyValueFactory<>("customer"));
-        bookedCarColumn1.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.25));
+        bookedCarColumn1.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.245));
         TableColumn<Booking, Customer> bookedCarColumn2 = new TableColumn<>("Car Name");
         bookedCarColumn2.setCellValueFactory(new PropertyValueFactory<>("car"));
-        bookedCarColumn2.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.25));
+        bookedCarColumn2.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.245));
         TableColumn<Booking, LocalDate> bookedCarColumn3 = new TableColumn<>("Return Date");
         bookedCarColumn3.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
-        bookedCarColumn3.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.25));
+        bookedCarColumn3.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.245));
         TableColumn<Booking, Double> bookedCarColumn4 = new TableColumn<>("Total Cost");
         bookedCarColumn4.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
-        bookedCarColumn4.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.25));
+        bookedCarColumn4.prefWidthProperty().bind(availableCarsTable.widthProperty().multiply(0.245));
 
         bookedCarsTable.getColumns().addAll(bookedCarColumn1, bookedCarColumn2,
                 bookedCarColumn3, bookedCarColumn4);
@@ -131,34 +138,49 @@ public class AdminView extends View {
 
     }
 
+    /**
+     * @return car name field
+     */
     public TextField getCarNameField() {
 
         return carNameField;
 
     }
 
+    /**
+     * @return car price field
+     */
     public TextField getCarPriceField() {
 
         return carPriceField;
 
     }
 
+    /**
+     * @return updated car price field
+     */
     public TextField getUpdateCarPriceField() {
 
         return updateCarPriceField;
 
     }
 
+    /**
+     * @return available cars table
+     */
     public TableView<Car> getAvailableCarsTable() {
 
         return availableCarsTable;
 
     }
 
+    /**
+     * @return booking table
+     */
     public TableView<Booking> getBookedCarsTable() {
 
         return bookedCarsTable;
 
     }
-    
+
 }

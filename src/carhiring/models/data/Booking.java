@@ -3,6 +3,7 @@ package carhiring.models.data;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  * Booking.java
@@ -37,7 +38,7 @@ public class Booking implements Serializable {
         this.car = customer.getBookedCar();
         this.bookingDate = LocalDate.now();
         this.returnDate = returnDate;
-        this.totalDays = Duration.between(bookingDate, returnDate).toDays();
+        this.totalDays = Period.between(bookingDate, returnDate).getDays();
         this.totalCost = totalDays * customer.getBookedCar().getCostPerDay();
 
     }

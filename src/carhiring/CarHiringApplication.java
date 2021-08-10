@@ -40,7 +40,7 @@ public class CarHiringApplication extends Application implements SceneUpdater {
         primaryStage.setTitle("Car Hiring Program");
 
         // setting the login controller
-        updateControllerSceneType(SceneType.MAIN_ADMIN);
+        updateControllerSceneType(SceneType.MAIN_CUSTOMER);
 
         // Start the program.
         primaryStage.show();
@@ -72,6 +72,7 @@ public class CarHiringApplication extends Application implements SceneUpdater {
                 controller = ControllerFactory.createLoginController(this);
                 break;
             case MAIN_CUSTOMER:
+                controller = ControllerFactory.createCustomerController(this);
                 break;
             case MAIN_ADMIN:
                 controller = ControllerFactory.createAdminController(this);
