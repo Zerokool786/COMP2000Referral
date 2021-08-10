@@ -1,6 +1,7 @@
 package carhiring;
 
 import carhiring.controllers.Controller;
+import carhiring.utils.ControllerFactory;
 import carhiring.utils.SceneType;
 import carhiring.utils.SceneUpdater;
 import javafx.application.Application;
@@ -38,6 +39,9 @@ public class CarHiringApplication extends Application implements SceneUpdater {
         // Initialising the stage.
         primaryStage.setTitle("Car Hiring Program");
 
+        // setting the login controller
+        updateControllerSceneType(SceneType.LOGIN);
+
         // Start the program.
         primaryStage.show();
 
@@ -65,10 +69,11 @@ public class CarHiringApplication extends Application implements SceneUpdater {
         switch (type) {
 
             case LOGIN:
+                controller = ControllerFactory.createLoginController(this);
                 break;
             case MAIN_CUSTOMER:
                 break;
-            case MAIN_DEALER:
+            case MAIN_ADMIN:
                 break;
 
         }

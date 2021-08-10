@@ -12,6 +12,6 @@ public enum SceneType {
 
     LOGIN,
     MAIN_CUSTOMER,
-    MAIN_DEALER;
+    MAIN_ADMIN;
 
 }

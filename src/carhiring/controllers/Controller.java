@@ -36,6 +36,7 @@ public abstract class Controller implements EventHandler<ActionEvent> {
         this.updater = updater;
         this.model = model;
         this.view = view;
+        getView().registerBTNActions(this);
 
     }
 

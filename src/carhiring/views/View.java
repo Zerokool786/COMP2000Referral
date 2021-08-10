@@ -3,6 +3,7 @@ package carhiring.views;
 import carhiring.controllers.Controller;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
@@ -28,6 +29,9 @@ public abstract class View {
      */
     public View() {
 
+        group = new Group();
+        initUI();
+
     }
 
     /**
@@ -47,6 +51,15 @@ public abstract class View {
     public void setController(Controller controller) {
 
         this.controller = controller;
+
+    }
+
+    /**
+     * @return group of view.
+     */
+    public Group getGroup() {
+
+        return group;
 
     }
 
@@ -73,6 +86,22 @@ public abstract class View {
     }
 
     /**
+     * It will add the component into
+     * the group.
+     *
+     * @param component current field
+     * @param x x-axis location of field
+     * @param y y-axis location of field
+     */
+    public void include(Region component, int x, int y) {
+
+        component.setLayoutX(x);
+        component.setLayoutY(y);
+        group.getChildren().add(component);
+
+    }
+
+    /**
      * Setting the new font for the label.
      *
      * @param label current component
@@ -83,6 +112,21 @@ public abstract class View {
 
         label.setFont(Font.font("Verdana", FontWeight.BOLD, size));
         return label;
+
+    }
+
+    /**
+     * Creating the alert for the project.
+     *
+     * @param alertType of alert
+     * @param content of alert
+     */
+    public void createAlert(Alert.AlertType alertType, String content) {
+
+        Alert alert = new Alert(alertType);
+        alert.setTitle("Car Hiring");
+        alert.setContentText(content);
+        alert.show();
 
     }
 
@@ -98,5 +142,13 @@ public abstract class View {
      * @return ready to use scene
      */
     public abstract Scene getScene();
+
+    /**
+     * It will add all of the Button listeners
+     * to the controller.
+     *
+     * @param controller to register listeners.
+     */
+    public abstract void registerBTNActions(Controller controller);
 
 }
