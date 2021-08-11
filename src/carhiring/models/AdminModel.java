@@ -70,6 +70,34 @@ public class AdminModel extends Model {
     }
 
     /**
+     * Return the booking back.
+     *
+     * @param index of car
+     */
+    public void returnBooking(int index) {
+
+        if (index >= 0 && index < bookingList.size()) {
+
+            Booking booking = bookingList.get(index);
+            for (int i = 0; i < carList.size(); i++) {
+                Car car = carList.get(i);
+                if (car.getName().equals(booking.getCar().getName())) {
+
+                    bookingList.remove(booking);
+                    carList.get(i).setCarAvailableDate(null);
+                    carList.get(i).setAvailable(true);
+                    updateCarDetails();
+                    updateBookingDetails();
+                    break;
+
+                }
+            }
+
+        }
+
+    }
+
+    /**
      * @return list of available cars
      */
     public List<Car> getAvailableCars() {
@@ -100,6 +128,19 @@ public class AdminModel extends Model {
 
         try {
             saveData(Car.FILENAME, carList);
+        } catch (IOException e) {
+            // unable to write the data to file.
+        }
+
+    }
+
+    /**
+     * Updating the booking details.
+     */
+    private void updateBookingDetails() {
+
+        try {
+            saveData(Booking.FILENAME, bookingList);
         } catch (IOException e) {
             // unable to write the data to file.
         }

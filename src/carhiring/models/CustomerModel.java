@@ -68,18 +68,22 @@ public class CustomerModel extends Model {
      *
      * @param index of car
      * @param customer booking
+     *
+     * @return booking done.
      */
-    public void addCustomerBooking(int index, Customer customer) {
+    public Booking addCustomerBooking(int index, Customer customer) {
 
         if (index < 0 || index > carList.size()) {
-            return;
+            return null;
         }
+        Booking booking = new Booking(customer, customer.getBookedCar().getCarAvailableDate());
         this.carList.set(index, customer.getBookedCar());
         this.customerList.add(customer);
-        this.bookingList.add(new Booking(customer, customer.getBookedCar().getCarAvailableDate()));
+        this.bookingList.add(booking);
         this.updateCarDetails();
         this.updateCustomerDetails();
         this.updateBookingDetails();
+        return booking;
 
     }
 

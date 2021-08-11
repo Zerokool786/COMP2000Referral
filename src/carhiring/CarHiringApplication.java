@@ -24,6 +24,7 @@ public class CarHiringApplication extends Application implements SceneUpdater {
     // Attributes..
     private Stage stage;
     private Controller currentController;
+    private ReceiptStage receiptStage;
 
     /**
      * To initialise the stage and
@@ -40,10 +41,13 @@ public class CarHiringApplication extends Application implements SceneUpdater {
         primaryStage.setTitle("Car Hiring Program");
 
         // setting the login controller
-        updateControllerSceneType(SceneType.MAIN_CUSTOMER);
+        updateControllerSceneType(SceneType.LOGIN);
 
         // Start the program.
         primaryStage.show();
+
+        // setting up the receipt stage.
+        //receiptStage = new ReceiptStage();
 
     }
 

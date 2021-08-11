@@ -29,6 +29,7 @@ public class AdminView extends View {
     private TextField updateCarPriceField;
     private Button createCarButton;
     private Button updateCarButton;
+    private Button returnCarButton;
     private Button logoutButton;
     private TableView<Car> availableCarsTable;
     private TableView<Booking> bookedCarsTable;
@@ -45,15 +46,18 @@ public class AdminView extends View {
         createCarButton = new Button("Create Car");
         updateCarButton = new Button("Update Cost");
         logoutButton = new Button("Logout");
+        returnCarButton = new Button("Car Returned");
 
         // setting colors.
         createCarButton.setStyle("-fx-background-color: green; -fx-text-fill: white;");
         updateCarButton.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
         logoutButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+        returnCarButton.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
 
         // Setting ids.
         createCarButton.setId("CREATE_CAR");
         updateCarButton.setId("UPDATE_CAR");
+        returnCarButton.setId("RETURN_CAR");
         logoutButton.setId("LOGOUT_ADMIN");
 
         // Box for creating car.
@@ -118,7 +122,8 @@ public class AdminView extends View {
         include(font(new Label("Update Car (Select Row from Table to Update)"), 12), 20, 230);
         include(updateBox, 20, 260);
         include(font(new Label("Booked Cars"), 12), 20, 300);
-        include(bookedCarsTable, 20, 330, 860, 150);
+        include(bookedCarsTable, 20, 330, 860, 110);
+        include(returnCarButton, 780, 450, 100, 30);
 
     }
 
@@ -134,6 +139,7 @@ public class AdminView extends View {
 
         createCarButton.setOnAction(controller);
         updateCarButton.setOnAction(controller);
+        returnCarButton.setOnAction(controller);
         logoutButton.setOnAction(controller);
 
     }

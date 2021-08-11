@@ -120,6 +120,21 @@ public class AdminController extends Controller {
                 }
 
                 break;
+            case "RETURN_CAR":
+
+                index = getAdminView().getBookedCarsTable().getSelectionModel().getSelectedIndex();
+                if (index != -1) {
+                    getAdminModel().returnBooking(index);
+                    getAdminView().getAvailableCarsTable().getItems().clear();
+                    getAdminView().getAvailableCarsTable().getItems().addAll(getAdminModel().getAvailableCars());
+                    getAdminView().getBookedCarsTable().getItems().clear();
+                    getAdminView().getBookedCarsTable().getItems().addAll(getAdminModel().getBookingList());
+                    getView().createAlert(Alert.AlertType.INFORMATION, "Car returned successfully!");
+                } else {
+                    getView().createAlert(Alert.AlertType.ERROR, "Select booking to return it.");
+                }
+
+                break;
             case "LOGOUT_ADMIN":
                 getUpdater().updateControllerSceneType(SceneType.LOGIN);
                 break;

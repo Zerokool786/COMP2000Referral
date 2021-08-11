@@ -1,13 +1,16 @@
 package carhiring.controllers;
 
+import carhiring.ReceiptStage;
 import carhiring.models.CustomerModel;
 import carhiring.models.Model;
+import carhiring.models.data.Booking;
 import carhiring.models.data.Car;
 import carhiring.models.data.Customer;
 import carhiring.utils.SceneType;
 import carhiring.utils.SceneUpdater;
 import carhiring.views.CustomerView;
 import carhiring.views.View;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -91,10 +94,18 @@ public class CustomerController extends Controller implements ChangeListener<Loc
                             Customer customer = new Customer(name, address, license, selectedCar);
                             selectedCar.setAvailable(false);
                             selectedCar.setCarAvailableDate(returnDate);
-                            getCustomerModel().addCustomerBooking(index, customer);
+                            Booking booking = getCustomerModel().addCustomerBooking(index, customer);
                             getCustomerView().getAvailableCarsTable().getItems().clear();
                             getCustomerView().getAvailableCarsTable().getItems().addAll(getCustomerModel().getAvailableCars());
-                            getView().createAlert(Alert.AlertType.INFORMATION, "Booking is completed!");
+
+                           if (booking != null) {
+
+                               generateReceipt(booking);
+                               getView().createAlert(Alert.AlertType.INFORMATION, "Booking is completed!");
+
+                           } else {
+                               getView().createAlert(Alert.AlertType.ERROR, "Booking invalid!");
+                           }
 
                         }
 
@@ -110,6 +121,36 @@ public class CustomerController extends Controller implements ChangeListener<Loc
                 getUpdater().updateControllerSceneType(SceneType.LOGIN);
                 break;
         }
+
+    }
+
+    /**
+     * It will generate a receipt here.
+     *
+     * @param booking to do booking
+     */
+    private void generateReceipt(Booking booking) {
+
+        Thread thread = new Thread() {
+
+            @Override
+            public void run () {
+
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        ReceiptStage receiptStage = new ReceiptStage();
+                        receiptStage.setBooking(booking);
+                        receiptStage.show();
+
+                    }
+                });
+
+            }
+
+        };
+        thread.start();
 
     }
 
